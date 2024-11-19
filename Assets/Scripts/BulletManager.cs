@@ -7,6 +7,9 @@ public class BulletManager : MonoBehaviour
     public GameObject bulletPrefab;
     private Vector2 _lookDirection;
     private float _lookAngle;
+    private float timer = 0;
+    public float maxTimer;
+    private bool isTimer = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,9 +22,24 @@ public class BulletManager : MonoBehaviour
         _lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         _lookAngle = Mathf.Atan2(_lookDirection.y, _lookDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, _lookAngle + 90f);
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
-            Instantiate(bulletPrefab, new Vector2(transform.position.x,transform.position.y), transform.rotation);
-        }
+            if(isTimer)
+            {
+                Instantiate(bulletPrefab, new Vector2(transform.position.x, transform.position.y), transform.rotation);
+                timer = 0;
+                isTimer = false;
+            }
+            else
+            {
+                timer += Time.deltaTime;
+                if (timer >= maxTimer)
+                {
+                    isTimer = true;
+                }
+            }
+        }           
     }
+
+    
 }
