@@ -5,6 +5,7 @@ using UnityEngine;
 public class KingManager : MonoBehaviour
 {
     [SerializeField] private int vida;
+    public GameObject finJuego;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,8 @@ public class KingManager : MonoBehaviour
             if (vida == 0)
             {
                 Destroy(gameObject);
+                finJuego.SetActive(true);
+
             }
             else
             {
