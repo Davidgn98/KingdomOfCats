@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2705713954896514508}
   - component: {fileID: 3187993493764346011}
   - component: {fileID: 6799506831368734618}
-  - component: {fileID: 6305178762981913448}
   - component: {fileID: 1782872217604461650}
+  - component: {fileID: 6305178762981913448}
   m_Layer: 0
   m_Name: FastEnemy
   m_TagString: Enemy
@@ -160,19 +160,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.12, y: 5.12}
   m_EdgeRadius: 0
---- !u!114 &6305178762981913448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2382239298146901289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f6d9acb9fb2ce64291a8dd6c64689f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vida: 1
 --- !u!114 &1782872217604461650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +173,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6
+--- !u!114 &6305178762981913448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382239298146901289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f6d9acb9fb2ce64291a8dd6c64689f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 1
+  exp: 2

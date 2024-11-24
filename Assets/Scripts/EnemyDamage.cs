@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] private int vida;
+    [SerializeField] private int exp;
+    private PlayerEXP playerEXP;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerEXP = GameObject.FindWithTag("Jugador").GetComponent<PlayerEXP>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class EnemyDamage : MonoBehaviour
             Destroy(other.gameObject);
             if(vida == 0)
             {
+                playerEXP.AddEXP(exp);
                 Destroy(gameObject);
             }
             else

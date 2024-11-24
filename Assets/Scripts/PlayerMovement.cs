@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    [SerializeField] private float _speed;
+    public float speed;
     private Vector2 _direction;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 pos = transform.position;
         _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        _rb.MovePosition(pos + (_speed * Time.fixedDeltaTime * _direction));
+        _rb.MovePosition(pos + (speed * Time.fixedDeltaTime * _direction));
     }
 }

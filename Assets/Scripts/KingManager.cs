@@ -1,37 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KingManager : MonoBehaviour
 {
-    [SerializeField] private int vida;
+    public int vida;
     public GameObject finJuego;
-    // Start is called before the first frame update
-    void Start()
+    public Image barraVida;
+    public Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+    public GameObject player;
+    private AudioSource audioSource;
+    public AudioClip hitSound;
+    public AudioClip deathSound;
+    private void Start()
     {
-        
+        audioSource = player.GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Enemy")
         {
             Destroy(other.gameObject);
-            if (vida == 0)
+            vida--;
+            if (vida <= 0)
             {
-                Destroy(gameObject);
+                audioSource.Stop();
+                audioSource.PlayOneShot(deathSound);
                 finJuego.SetActive(true);
-
+                Time.timeScale = 0;
             }
             else
             {
-                vida--;
+                if (audioSource != null && hitSound != null)
+                {
+                    audioSource.PlayOneShot(hitSound);
+                }
+                animator.SetTrigger("Hit");
+                barraVida.fillAmount = vida / 10f;
             }
 
         }
